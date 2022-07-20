@@ -33,6 +33,9 @@ class App extends Component {
 
   deleteReservation = (deletedReservation) => {
     this.setState({reservations: this.state.reservations.filter(reservation => reservation.id !== deletedReservation.id)});
+    fetch(`http://localhost:3001/api/v1/reservations/${deletedReservation.id}`, {method: 'DELETE'})
+      .then(response => response.json())
+      .then(response => console.log(response))
   }
 
 
