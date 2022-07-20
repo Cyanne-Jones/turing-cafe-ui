@@ -36,8 +36,10 @@ class Form extends Component {
 
   render() {
     return (
-      <form>
+      <form className="reservationForm">
         <input
+          id="name"
+          className="formInput"
           type="text"
           value={this.state.name}
           name="name"
@@ -45,6 +47,8 @@ class Form extends Component {
           placeholder="Name"
         />
         <input
+          id="date"
+          className="formInput"
           type="text"
           value={this.state.date}
           name="date"
@@ -52,6 +56,8 @@ class Form extends Component {
           placeholder="Date (mm/dd)"
         />
         <input
+          id="time"
+          className="formInput"
           type="text"
           value={this.state.time}
           name="time"
@@ -59,13 +65,17 @@ class Form extends Component {
           placeholder="Time"
         />
         <input
+          id="numberOfGuests"
+          className="formInput"
           type="text"
           value={this.state.numberOfGuests}
           name="numberOfGuests"
           onChange={this.handleChange}
           placeholder="Number of Guests"
         />
-        <button onClick={this.makeReservation}>Make Reservation</button>
+        <button 
+        id="makeReservationButton"
+        onClick={this.makeReservation}>Make Reservation</button>
       </form>
     )
   }
