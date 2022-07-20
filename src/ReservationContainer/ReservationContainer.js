@@ -9,7 +9,7 @@ function ReservationContainer({reservations, deleteReservation}) {
   })
 
   return (
-    <div className = "resy-container">
+    <div className="resy-container">
       {reservationComponents}
     </div>
   );
