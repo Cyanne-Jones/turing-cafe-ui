@@ -31,13 +31,21 @@ class App extends Component {
     .then(response => this.setState({reservations: response}))
   }
 
+  deleteReservation = (deletedReservation) => {
+    this.setState({reservations: this.state.reservations.filter(reservation => reservation.id !== deletedReservation.id)});
+  }
+
 
   render() {
     return (
       <div className="App">
         <h1 className='app-title'>Turing Cafe Reservations</h1>
-        <Form saveReservation={this.saveReservation} reservations={this.state.reservations}/>
-        <ReservationContainer reservations={this.state.reservations}/>
+        <Form 
+          saveReservation={this.saveReservation} 
+          reservations={this.state.reservations}/>
+        <ReservationContainer 
+          deleteReservation={this.deleteReservation}
+          reservations={this.state.reservations}/>
       </div>
     )
   }
