@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import ReservationContainer from "../ReservationContainer/ReservationContainer"
-import Form from "../Form/Form"
+import ReservationContainer from "../ReservationContainer/ReservationContainer";
+import Form from "../Form/Form";
 
 class App extends Component {
 
@@ -13,7 +13,6 @@ class App extends Component {
   }
 
   saveReservation = (reservation) => {
-    this.setState({reservations: [...this.state.reservations, reservation]})
     fetch('http://localhost:3001/api/v1/reservations', {
       method: 'POST',
       body: JSON.stringify(reservation),
@@ -22,21 +21,24 @@ class App extends Component {
       }
     })
     .then(response => response.json())
-    .then(response => console.log(response))
-  }
+    .then(response => this.setState({reservations: [...this.state.reservations, response]}))
+    .catch(response => console.error(response));
+  };
 
   componentDidMount = () => {
     fetch('http://localhost:3001/api/v1/reservations')
     .then(response => response.json())
     .then(response => this.setState({reservations: response}))
-  }
+    .catch(response => console.error(response));
+  };
 
   deleteReservation = (deletedReservation) => {
     this.setState({reservations: this.state.reservations.filter(reservation => reservation.id !== deletedReservation.id)});
     fetch(`http://localhost:3001/api/v1/reservations/${deletedReservation.id}`, {method: 'DELETE'})
       .then(response => response.json())
       .then(response => console.log(response))
-  }
+      .catch(response => console.error(response));
+  };
 
 
   render() {
@@ -50,8 +52,8 @@ class App extends Component {
           deleteReservation={this.deleteReservation}
           reservations={this.state.reservations}/>
       </div>
-    )
-  }
-}
+    );
+  };
+};
 
 export default App;

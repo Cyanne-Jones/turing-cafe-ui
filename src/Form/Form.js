@@ -13,8 +13,8 @@ class Form extends Component {
   }
 
   handleChange = (event) => {
-    this.setState({[event.target.name]: event.target.value})
-  }
+    this.setState({[event.target.name]: event.target.value});
+  };
 
   makeReservation = (event) => {
     event.preventDefault();
@@ -24,15 +24,15 @@ class Form extends Component {
       name: this.state.name,
       time: this.state.time,
       number: Number(this.state.numberOfGuests)
-    }
-    this.props.saveReservation(newReservation)
+    };
+    this.props.saveReservation(newReservation);
     this.setState({
       name: '',
       date: '',
       time: '',
       numberOfGuests: ''
-  })
-  }
+    });
+  };
 
   render() {
     return (
@@ -77,8 +77,8 @@ class Form extends Component {
         id="makeReservationButton"
         onClick={this.makeReservation}>Make Reservation</button>
       </form>
-    )
-  }
-}
+    );
+  };
+};
 
 export default Form;

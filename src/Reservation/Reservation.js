@@ -11,7 +11,7 @@ function Reservation ({reservation, deleteReservation}) {
       <p>Number of Guests: {reservation.number}</p>
       <button onClick={() => deleteReservation(reservation)}>Cancel</button>
     </div>
-  )
-}
+  );
+};
 
 export default Reservation;

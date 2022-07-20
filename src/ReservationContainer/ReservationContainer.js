@@ -1,6 +1,6 @@
 import React from 'react';
 import '../App/App.css';
-import Reservation from "../Reservation/Reservation"
+import Reservation from "../Reservation/Reservation";
 
 function ReservationContainer({reservations, deleteReservation}) {
 
